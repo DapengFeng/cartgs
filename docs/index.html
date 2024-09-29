@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-127PQSMYY6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-127PQSMYY6');
+    </script>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="Gaussian splatting,SLAM">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CaRtGS: Computational Alignment for Real-Time Gaussian Splatting SLAM</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link href="static/css/twentytwenty.css" rel="stylesheet" type="text/css" />
+    <link href="static/css/twentytwenty.vid.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+
+    <meta property="og:url" content="https://dapengfeng.github.io/cartgs/" />
+    <meta property="og:title" content="CaRtGS" />
+    <meta property="og:description"
+      content="CaRtGS: Computational Alignment for Real-Time Gaussian Splatting SLAM" />
+    <meta property="og:image" content="static/images/preview.png" />
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.2.0/model-viewer.min.js"></script>
+  </head>
+
+  <body>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title"><strong>CaRtGS</strong>: Computational Alignment for Real-Time Gaussian Splatting SLAM</h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://github.com/DapengFeng">Dapeng Feng</a><sup>1</sup>,</span>
+                <span class="author-block">
+                  <a href="https://github.com/thisparticle">Zhiqiang Chen</a><sup>2</sup>,</span>
+                <span class="author-block">
+                  Yizhen Yin<sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://github.com/zhongshp">Shipeng Zhong</a><sup>3</sup>,
+                </span>
+                <span class="author-block">
+                  Yuhua Qi<sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  Hongbo Chen<sup>1</sup>,
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><sup>1</sup>Sun Yat-sen University,</span>
+                <span class="author-block"><sup>2</sup>The University of Hong Kong,</span>
+                <span class="author-block"><sup>3</sup>WeRide Inc.</span>
+              </div>
+
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- PDF Link. -->
+                  <span class="link-block">
+                    <a href="https://github.com/dapengfeng/cartgs" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+                  <!-- Code Link. -->
+                  <span class="link-block">
+                    <a href="https://github.com/dapengfeng/cartgs"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero teaser">
+      <div class="container is-centered has-text-justified">
+        <img src="images/teaser.png">
+        <p><strong>Comparative Analysis and Visualization of CaRtGS Rendering Quality and Model Size Efficiency.</strong> This figure
+          starkly contrasts the traditional Photo-SLAM with our novel CaRtGS, showcasing the leap in technology. The imagery vividly
+          demonstrates CaRtGS’s superior rendering quality and model size efficiency, which are paramount for real-time applications.
+          The enhanced rendering is achieved through our splat-wise backpropagation and adaptive computational alignment strategy,
+          while the model size efficiency is a result of our opacity regularization technique.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content is-centered has-text-justified">
+              <p>
+                Simultaneous localization and mapping (SLAM) is pivotal in robotics, with photorealistic scene reconstruction emerging as a key challenge.
+                To address this, we introduce Computational Alignment for Real-Time Gaussian Splatting SLAM (CaRtGS),
+                a novel method enhancing the efficiency and quality of photorealistic scene reconstruction in real-time environments.
+                Leveraging 3D Gaussian Splatting (3DGS), CaRtGS achieves superior rendering quality and processing speed,
+                which is crucial for scene photorealistic reconstruction.
+                Our approach tackles computational misalignment in Gaussian Splatting SLAM (GS-SLAM) through an adaptive strategy that optimizes training,
+                addresses long-tail optimization, and refines densification.
+                Experiments on Replica and TUM-RGBD datasets demonstrate CaRtGS's effectiveness in achieving high-fidelity rendering with fewer Gaussian primitives.
+                This work propels SLAM towards real-time, photorealistic dense rendering, significantly advancing photorealistic scene representation.
+                For the benefit of the research community, we will release the code on our project website: https://dapengfeng.github.io/cartgs.
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <!--/ Abstract. -->
+        <!-- Overview. -->
+        <div class="columns is-centered has-text-justified">
+          <div class="column is-four-fifths">
+            <h2 class="title is-4"></h2>
+            <img src="images/overview.png" alt="Interpolate start reference image.">
+            <p><strong>The overview of CaRtGS.</strong>We adopt ORB-SLAM3 as a front-end tracker, severing for localization and geometry mapping.
+              In the photorealistic rendering back-end, we apply the proposed adaptive computational alignment strategy to enhance the 3DGS optimization process,
+              including fast splat backward, adaptive optimization, and opacity regularization.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="column has-text-centered">
+          <h2 class="title is-3">Videos</h2>
+        </div>
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <p class="title is-5">
+              <strong class="title is-5" style="margin-right: 10px; white-space: nowrap; letter-spacing: -2px;">
+                <span style="color: red;">N</span>
+                <span style="color: blue;">O</span>
+                <span style="color: green;">T</span>
+                <span style="color: orange;">E</span>
+                <span style="color: black;">:</span>
+              </strong> Click on video to play or pause. Move mouse to change the hover.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container has-text-centered">
+        <div class="column">
+          <div class="title is-4">Replica</div>
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap;">
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom" >
+              <div alt="Photo-SLAM (0.8x)">
+                <video src="videos/replica_mono_r0_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(0.8x)">
+                <video src="videos/replica_mono_r0_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5">room0</div>
+          </div>
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap;">
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom" >
+              <div alt="Photo-SLAM (0.8x)">
+                <video src="videos/replica_mono_r1_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(0.8x)">
+                <video src="videos/replica_mono_r1_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5">room1</div>
+          </div>
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap;">
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom" >
+              <div alt="Photo-SLAM (0.8x)">
+                <video src="videos/replica_mono_r2_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(0.8x)">
+                <video src="videos/replica_mono_r2_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5">room2</div>
+          </div>
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap;">
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom" >
+              <div alt="Photo-SLAM (0.8x)">
+                <video src="videos/replica_mono_o0_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(0.8x)">
+                <video src="videos/replica_mono_o0_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5">office0</div>
+          </div>
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap;">
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom" >
+              <div alt="Photo-SLAM (0.8x)">
+                <video src="videos/replica_mono_o1_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(0.8x)">
+                <video src="videos/replica_mono_o1_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5">office1</div>
+          </div>
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap;">
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom" >
+              <div alt="Photo-SLAM (0.8x)">
+                <video src="videos/replica_mono_o2_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(0.8x)">
+                <video src="videos/replica_mono_o2_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5">office2</div>
+          </div>
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap;">
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom" >
+              <div alt="Photo-SLAM (0.8x)">
+                <video src="videos/replica_mono_o3_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(0.8x)">
+                <video src="videos/replica_mono_o3_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5">office3</div>
+          </div>
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap;">
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom" >
+              <div alt="Photo-SLAM (0.8x)">
+                <video src="videos/replica_mono_o4_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(0.8x)">
+                <video src="videos/replica_mono_o4_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5">office4</div>
+          </div>
+        </div>
+      </div>
+      <div class="container has-text-centered">
+        <div class="column">
+          <div class="title is-4">TUM-RGBD</div>
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap;">
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom" >
+              <div alt="Photo-SLAM (1.3x)">
+                <video src="videos/tum_rgbd_fr1_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(1.3x)">
+                <video src="videos/tum_rgbd_fr1_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5">fr1/desk</div>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom" >
+              <div alt="Photo-SLAM(1.3x)">
+                <video src="videos/tum_rgbd_fr2_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(1.3x)">
+                <video src="videos/tum_rgbd_fr2_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5" style="width: auto;">fr2/xyz</div>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="twentytwenty-vid-container twentytwenty-custom">
+              <div alt="Photo-SLAM(1.3x)">
+                <video src="videos/tum_rgbd_fr3_photo_slam.mp4" autoplay muted loop playsinline ></video>
+              </div>
+              <div alt="CaRtGS(1.3x)">
+                <video src="videos/tum_rgbd_fr3_ours.mp4" autoplay muted loop playsinline ></video>
+              </div>
+            </div>
+            <div class="title is-5" style="width: auto;">fr3/office</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="column has-text-centered">
+          <h2 class="title is-3">More Comparisons</h2>
+        </div>
+      </div>
+      <div class="container" style="display: flex; flex-wrap: wrap;">
+        <div class="column has-text-centered">
+          <div class="twentytwenty-vid-container twentytwenty-custom" >
+            <div alt="SplaTAM (120.0x)">
+              <video src="videos/tum_rgbd_fr1_splatam.mp4" autoplay muted loop playsinline ></video>
+            </div>
+            <div alt="MonoGS (12.0x)">
+              <video src="videos/tum_rgbd_fr1_monogs.mp4" autoplay muted loop playsinline ></video>
+            </div>
+            <div alt="GS-ICP-SLAM (1.0x)">
+              <video src="videos/tum_rgbd_fr1_gs_icp_slam.mp4" autoplay muted loop playsinline ></video>
+            </div>
+            <div alt="CaRtGS(1.3x)">
+              <video src="videos/tum_rgbd_fr1_ours.mp4" autoplay muted loop playsinline ></video>
+            </div>
+          </div>
+          <div class="title is-5">fr1/desk</div>
+        </div>
+      </div>
+      <div class="container" style="display: flex; flex-wrap: wrap;">
+        <div class="column has-text-centered">
+          <div class="twentytwenty-vid-container twentytwenty-custom" >
+            <div alt="SplaTAM (120.0x)">
+              <video src="videos/tum_rgbd_fr2_splatam.mp4" autoplay muted loop playsinline ></video>
+            </div>
+            <div alt="MonoGS (12.0x)">
+              <video src="videos/tum_rgbd_fr2_monogs.mp4" autoplay muted loop playsinline ></video>
+            </div>
+            <div alt="GS-ICP-SLAM (1.0x)">
+              <video src="videos/tum_rgbd_fr2_gs_icp_slam.mp4" autoplay muted loop playsinline ></video>
+            </div>
+            <div alt="CaRtGS(1.3x)">
+              <video src="videos/tum_rgbd_fr2_ours.mp4" autoplay muted loop playsinline ></video>
+            </div>
+          </div>
+          <div class="title is-5">fr2/xyz</div>
+        </div>
+      </div>
+      <div class="container" style="display: flex; flex-wrap: wrap;">
+        <div class="column has-text-centered">
+          <div class="twentytwenty-vid-container twentytwenty-custom" >
+            <div alt="SplaTAM (120.0x)">
+              <video src="videos/tum_rgbd_fr3_splatam.mp4" autoplay muted loop playsinline ></video>
+            </div>
+            <div alt="MonoGS (12.0x)">
+              <video src="videos/tum_rgbd_fr3_monogs.mp4" autoplay muted loop playsinline ></video>
+            </div>
+            <div alt="GS-ICP-SLAM (1.0x)">
+              <video src="videos/tum_rgbd_fr3_gs_icp_slam.mp4" autoplay muted loop playsinline ></video>
+            </div>
+            <div alt="CaRtGS(1.3x)">
+              <video src="videos/tum_rgbd_fr3_ours.mp4" autoplay muted loop playsinline ></video>
+            </div>
+          </div>
+          <div class="title is-5">fr3/office</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <footer>
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content has-text-centered">
+              <p>
+                This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC
+                  BY-SA 4.0</a>
+                and is based on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> site.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery.event.move.js"></script>
+    <script src="static/js/jquery.twentytwenty.js"></script>
+    <script src="static/js/jquery.twentytwenty.vid.js"></script>
+    <script>
+      $(window).load(function () { $(".twentytwenty-container").twentytwenty({ default_offset_pct: 0.5 }); });
+      $(window).load(function () { $(".twentytwenty-vid-container").twentytwentyvid({ default_offset_pct: 0.5 }); });
+    </script>
+  </body>
+
+</html>
