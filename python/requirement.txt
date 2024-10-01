@@ -1,0 +1,9 @@
+evo
+torchmetrics
+numpy
+scipy
+scikit-image
+lpips
+pillow
+tqdm
+plyfile

@@ -1,0 +1,6 @@
+[submodule "third_party/opencv"]
+	path = third_party/opencv
+	url = git@github.com:opencv/opencv.git
+[submodule "third_party/opencv_contrib"]
+	path = third_party/opencv_contrib
+	url = git@github.com:opencv/opencv_contrib.git
