@@ -103,7 +103,6 @@ Finally, you are supposed to get two files including `RESULTS_PATH/log.txt` and 
 We provide an example with the Intel RealSense D455 at `examples/realsense_rgbd.cpp`. Please see `scripts/realsense_d455.sh` for running it.
 
 ## Acknowledgement
-# Acknowledgement
 This work incorporates many open-source codes. We extend our gratitude to the authors of the software.
 - [Photo-SLAM](https://github.com/HuajianUP/Photo-SLAM)
 - [Taming 3DGS](https://github.com/humansensinglab/taming-3dgs)
