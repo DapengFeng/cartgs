@@ -102,16 +102,22 @@ Finally, you are supposed to get two files including `RESULTS_PATH/log.txt` and 
 
 We provide an example with the Intel RealSense D455 at `examples/realsense_rgbd.cpp`. Please see `scripts/realsense_d455.sh` for running it.
 
+## Acknowledgement
+# Acknowledgement
+This work incorporates many open-source codes. We extend our gratitude to the authors of the software.
+- [Photo-SLAM](https://github.com/HuajianUP/Photo-SLAM)
+- [Taming 3DGS](https://github.com/humansensinglab/taming-3dgs)
+
 # Citation
 If you find this work useful in your research, consider citing it:
 ```
 @misc{feng2024CaRtGS,
-      title={CaRtGS: Computational Alignment for Real-Time Gaussian Splatting SLAM}, 
+      title={CaRtGS: Computational Alignment for Real-Time Gaussian Splatting SLAM},
       author={Dapeng Feng and Zhiqiang Chen and Yizhen Yin and Shipeng Zhong and Yuhua Qi and Hongbo Chen},
       year={2024},
       eprint={2410.00486},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2410.00486}, 
+      url={https://arxiv.org/abs/2410.00486},
 }
 ```
