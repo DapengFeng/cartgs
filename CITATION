@@ -1,0 +1,9 @@
+@misc{feng2024CaRtGS,
+      title={CaRtGS: Computational Alignment for Real-Time Gaussian Splatting SLAM}, 
+      author={Dapeng Feng and Zhiqiang Chen and Yizhen Yin and Shipeng Zhong and Yuhua Qi and Hongbo Chen},
+      year={2024},
+      eprint={2410.00486},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2410.00486}, 
+}

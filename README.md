@@ -1,5 +1,5 @@
 # CaRtGS
-### [Homepage](https://dapengfeng.github.io/cartgs/) | [Paper](https://dapengfeng.github.io/cartgs/)
+### [Homepage](https://dapengfeng.github.io/cartgs/) | [Paper](https://arxiv.org/abs/2410.00486)
 
 **CaRtGS: Computational Alignment for Real-Time Gaussian Splatting SLAM** <br>
 [Dapeng Feng](https://github.com/DapengFeng)<sup>1</sup>, [Zhiqiang Chen](https://github.com/thisparticle)<sup>2</sup>, Yizhen Yin<sup>1</sup>, [Shipeng Zhong](https://github.com/zhongshp)<sup>3</sup>, Yuhua Qi<sup>1</sup>, and Hongbo Chen<sup>1</sup> <br>
@@ -83,17 +83,17 @@ pip install -r python/requirement.txt
 ```
 
 ### install submodel for rendering
-```
+``` bash
 pip install -e python/diff-gaussian-rasterization/
 ```
 
 ### Convert Replica GT camera pose files to suitable pose files to run EVO package
-```
+``` bash
 python python/shapeReplicaGT.py --replica_dataset_path PATH_TO_REPLICA_DATASET
 ```
 
 ### To get all metrics, you can run
-```
+``` bash
 python python/eval.py --dataset_center_path PATH_TO_ALL_DATASET --result_main_folder RESULTS_PATH
 ```
 Finally, you are supposed to get two files including `RESULTS_PATH/log.txt` and `RESULTS_PATH/log.csv`.
@@ -101,3 +101,17 @@ Finally, you are supposed to get two files including `RESULTS_PATH/log.txt` and 
 ## CaRtGS Examples with Real Cameras
 
 We provide an example with the Intel RealSense D455 at `examples/realsense_rgbd.cpp`. Please see `scripts/realsense_d455.sh` for running it.
+
+# Citation
+If you find this work useful in your research, consider citing it:
+```
+@misc{feng2024CaRtGS,
+      title={CaRtGS: Computational Alignment for Real-Time Gaussian Splatting SLAM}, 
+      author={Dapeng Feng and Zhiqiang Chen and Yizhen Yin and Shipeng Zhong and Yuhua Qi and Hongbo Chen},
+      year={2024},
+      eprint={2410.00486},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2410.00486}, 
+}
+```
