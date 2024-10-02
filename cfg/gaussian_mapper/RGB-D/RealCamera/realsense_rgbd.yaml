@@ -52,26 +52,29 @@ Record.record_loop_ply: 0 # 0:false, 1 or other integer:true
 #--------------------------------------------------------------------------------------------
 
 # Learning rate
-Optimization.max_num_iterations: 30100
-Optimization.position_lr_init: 0.00032 #0.00016
-Optimization.position_lr_final: 0.00032
+Optimization.max_num_iterations: -1
+Optimization.position_lr_init: 0.00016 #0.00016
+Optimization.position_lr_final: 0.0000016
 Optimization.position_lr_delay_mult: 0.01
-Optimization.position_lr_max_steps: 24
+Optimization.position_lr_max_steps: 30000
 Optimization.feature_lr: 0.0025
 Optimization.opacity_lr: 0.05 #0.05
 Optimization.scaling_lr: 0.005 #0.005
 Optimization.rotation_lr: 0.001 #0.001
+Optimization.smooth_l1: 0  # 0:false, 1:true
+Optimization.opacity_reg: 0.001
 
 # Densification
 Optimization.percent_dense: 0.01
 Optimization.lambda_dssim: 0.2
-Optimization.densification_interval: 100
+Optimization.densification_interval: 500
 Optimization.opacity_reset_interval: 0  # 0:never, 1:always, others:periodically
-Optimization.prune_big_point_after_iter: 30000
-Optimization.densify_min_opacity: 0.1 #0.005
-Optimization.densify_from_iter: 1000
-Optimization.densify_until_iter: 30000
+Optimization.prune_big_point_after_iter: -1
+Optimization.densify_min_opacity: 0.02 #0.005
+Optimization.densify_from_iter: 500
+Optimization.densify_until_iter: -1
 Optimization.densify_grad_threshold: 0.001
+Optimization.auto_distribute: 4  # 0:false, 1 or other integer:true
 
 #--------------------------------------------------------------------------------------------
 # Viewer Parameters

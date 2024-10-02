@@ -61,10 +61,7 @@ Optimization.feature_lr: 0.0025
 Optimization.opacity_lr: 0.05 # 0.05
 Optimization.scaling_lr: 0.005 # 0.005
 Optimization.rotation_lr: 0.001 # 0.001
-Optimization.isotropic_loss: 0  # 0:false, 1:true
 Optimization.smooth_l1: 0  # 0:false, 1:true
-Optimization.gray_loss: 0  # 0:false, 1:true
-Optimization.scale_reg: 0.0
 Optimization.opacity_reg: 0.001
 
 # Densification
@@ -78,7 +75,6 @@ Optimization.densify_from_iter: 500
 Optimization.densify_until_iter: -1 # -1:forever
 Optimization.densify_grad_threshold: 0.001
 Optimization.auto_distribute: 4  # 0:false, 1 or other integer:true
-Optimization.inc_pyramid: 0 # 0:false, 1 or other integer:true
 
 #--------------------------------------------------------------------------------------------
 # Viewer Parameters
