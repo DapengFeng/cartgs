@@ -14,7 +14,7 @@ bin/tum_rgbd \
     data/TUM_RGBD/rgbd_dataset_freiburg1_desk \
     cfg/ORB_SLAM3/RGB-D/TUM/associations/tum_freiburg1_desk.txt \
     results/tum_rgbd/$exp/tum_rgbd_$i/rgbd_dataset_freiburg1_desk \
-    # no_viewer
+    no_viewer
 done
 
 for i in 0 1 2 3 4
