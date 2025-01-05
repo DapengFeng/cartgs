@@ -541,6 +541,9 @@ void GaussianMapper::run() {
   savePly(result_dir_ / (std::to_string(getIteration()) + "_shutdown") / "ply");
   writeKeyframeUsedTimes(result_dir_ / "used_times", "final");
 
+  std::cout << std::endl;
+  std::cout << getIteration() << " iterations completed." << std::endl;
+
   signalStop();
 }
 
