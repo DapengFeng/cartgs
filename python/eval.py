@@ -44,6 +44,19 @@ gt_dataset = {
             "rgbd_dataset_freiburg3_long_office_household",
         ],
     },
+    "eth3d": {
+        "path": os.path.join(dataset_center_path, "ETH3D/training"),
+        "scenes": [
+            "planar_2",
+            "planar_3",
+            "table_7",
+            "sfm_bench",
+            "sfm_garden",
+            "sfm_house_loop",
+            "sfm_lab_room_1",
+            "sfm_lab_room_2",
+        ],
+    },
 }
 
 # path the all results
