@@ -44,6 +44,18 @@ gt_dataset = {
             "rgbd_dataset_freiburg3_long_office_household",
         ],
     },
+    "vector": {
+        "path": os.path.join(dataset_center_path, "VECTor"),
+        "scenes": [
+            "board-slow",
+            "corner-slow",
+            "corridors-dolly",
+            "desk-normal",
+            "mountain-normal",
+            "robot-normal",
+            "sofa-normal",
+        ],
+    },
 }
 
 # path the all results
