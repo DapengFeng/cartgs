@@ -61,6 +61,7 @@ __global__ void reproject_depths_pinhole(const int P,
 __global__ void search_neighborhood_to_estimate_depth_and_reproject_pinhole(
     const int N,
     const int width,
+    const int height,
     const float fx,
     const float fy,
     const float cx,
@@ -80,6 +81,7 @@ __global__ void search_neighborhood_to_estimate_depth_and_reproject_pinhole(
   float v = pixels[pxidx + 1];
   int ptidx = idx * 3;
   int pxidx_in_image = v * width + u;
+  if (pxidx_in_image >= width * height || pxidx_in_image < 0) return;
 
   if (has3D[idx]) {
     point3D_result[ptidx] = point3D_orig[ptidx];
@@ -166,7 +168,8 @@ monocularPinholeInactiveGeoDensifyBySearchingNeighborhoodKeypoints(
     torch::Tensor& colors,
     float max_pixel_dist,
     std::vector<float>& intr,
-    int width) {
+    int width,
+    int height) {
   if (kps_pixel.ndimension() != 2 || kps_pixel.size(1) != 2)
     AT_ERROR("kps_pixel must have dimensions (num_points, 2)");
   if (kps_has3D.ndimension() != 1)
@@ -187,7 +190,8 @@ monocularPinholeInactiveGeoDensifyBySearchingNeighborhoodKeypoints(
     float cy = intr[3];
 
     search_neighborhood_to_estimate_depth_and_reproject_pinhole<<<
-        (N + 255) / 256, 256>>>(N, width, fx, fy, cx, cy, max_pixel_dist,
+        (N + 255) / 256, 256>>>(N, width, height, fx, fy, cx, cy,
+                                max_pixel_dist,
                                 kps_pixel.contiguous().data_ptr<float>(),
                                 kps_has3D.contiguous().data_ptr<bool>(),
                                 kps_point_local.contiguous().data_ptr<float>(),

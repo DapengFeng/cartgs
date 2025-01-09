@@ -45,7 +45,7 @@ gt_dataset = {
         ],
     },
     "vector": {
-        "path": os.path.join(dataset_center_path, "VECTor"),
+        "path": os.path.join(dataset_center_path, "VECtor"),
         "scenes": [
             "board-slow",
             "corner-slow",
