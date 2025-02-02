@@ -1214,7 +1214,7 @@ void GaussianMapper::increasePcdByKeyframeInactiveGeoDensify(
           monocularPinholeInactiveGeoDensifyBySearchingNeighborhoodKeypoints(
               kps_pixel_tensor, kps_has3D_tensor, kps_point_local_tensor,
               colors, monocular_inactive_geo_densify_max_pixel_dist_,
-              pkf->intr_, pkf->image_width_);
+              pkf->intr_, pkf->image_width_, pkf->image_height_);
       torch::Tensor& points3D_valid = std::get<0>(result);
       torch::Tensor& colors_valid = std::get<1>(result);
       // Transform points to the world coordinate

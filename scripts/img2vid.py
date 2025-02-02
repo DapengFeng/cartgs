@@ -19,7 +19,7 @@ if __name__ == "__main__":
     video_writer = cv2.VideoWriter(args.o, fourcc, 30, (w, h))
     for i in range(len(files)):
         try:
-            img = cv2.imread(os.path.join(args.i, "{}.jpg".format(i)))
+            img = cv2.imread(os.path.join(args.i, "{}".format(files[i])))
             video_writer.write(img)
         except Exception:
             continue

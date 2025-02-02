@@ -244,6 +244,22 @@ target_link_libraries(
     ${ORB_SLAM3_SOURCE_DIR}/lib/libORB_SLAM3.so
 )
 
+add_executable(vector_stereo examples/vector_stereo.cpp)
+target_link_libraries(
+    vector_stereo
+    gaussian_viewer
+    gaussian_mapper
+    ${ORB_SLAM3_SOURCE_DIR}/lib/libORB_SLAM3.so
+)
+
+add_executable(vector_mono examples/vector_mono.cpp)
+target_link_libraries(
+    vector_mono
+    gaussian_viewer
+    gaussian_mapper
+    ${ORB_SLAM3_SOURCE_DIR}/lib/libORB_SLAM3.so
+)
+
 ##################################################################################
 ##  Build the mapping examples to ${PROJECT_SOURCE_DIR}/bin
 ##################################################################################

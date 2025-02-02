@@ -39,4 +39,5 @@ monocularPinholeInactiveGeoDensifyBySearchingNeighborhoodKeypoints(
     torch::Tensor& colors,
     float max_pixel_dist,
     std::vector<float>& intr,
-    int width);
+    int width,
+    int height);
