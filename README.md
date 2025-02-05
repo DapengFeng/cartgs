@@ -23,9 +23,12 @@ cd cartgs/
 ./build.sh
 ```
 
+Splat-wise back-propagation for Depth Rendering (GS_ICP_SLAM) are released at https://github.com/DapengFeng/splatwise-diff-gaussian-rasterization.
+
+
 ## CaRtGS Examples on Some Benchmark Datasets
 
-The benchmark datasets mentioned in our paper: [Replica (NICE-SLAM Version)](https://github.com/cvg/nice-slam) and [TUM RGB-D](https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download).
+The benchmark datasets mentioned in our paper: [Replica (NICE-SLAM Version)](https://github.com/cvg/nice-slam), [TUM RGB-D](https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download) and [VECtor](https://star-datasets.github.io/vector/).
 
 0. (optional) Download the dataset.
 ```
