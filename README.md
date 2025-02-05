@@ -23,7 +23,7 @@ cd cartgs/
 ./build.sh
 ```
 
-Splat-wise back-propagation for Depth Rendering (GS_ICP_SLAM) are released at https://github.com/DapengFeng/splatwise-diff-gaussian-rasterization.
+Splat-wise back-propagation for Depth Rendering ([GS_ICP_SLAM](https://github.com/Lab-of-AI-and-Robotics/GS_ICP_SLAM)) are released at https://github.com/DapengFeng/splatwise-diff-gaussian-rasterization.
 
 
 ## CaRtGS Examples on Some Benchmark Datasets
